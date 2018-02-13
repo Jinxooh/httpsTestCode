@@ -5,15 +5,12 @@
 // server.httpsListen(8443);
 
 const express = require('express');
- 
-const bodyParser = require('body-parser');
 
 const https = require('https');
 const fs = require('fs');
 
 const app = express();
-const router = express.Router();
-app.use(bodyParser.json());
+
 app.get('/', function(req, res) {
   res.send('hello get world');
 });
@@ -29,4 +26,4 @@ const options = {
   cert: fs.readFileSync(`${rootDir}/cert.pem`),
 };
 
-https.createServer(options, app).listen(8443, () => console.log('Https server listening on port ', 8443));
+https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
