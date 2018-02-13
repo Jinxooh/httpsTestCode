@@ -17,7 +17,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use('/', routes);
 
-const { app } = this;
 const rootDir = '/etc/letsencrypt/live/jadoochat.standard.kr';
 const options = {
   ca: fs.readFileSync(`${rootDir}/chain.pem`),
