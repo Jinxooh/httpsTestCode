@@ -11,11 +11,16 @@ const bodyParser = require('body-parser');
 const https = require('https');
 const fs = require('fs');
 
-const routes = require('./routes');
-
 const app = express();
+const router = express.Router();
 app.use(bodyParser.json());
-app.use('/', routes);
+app.get('/', function(req, res) {
+  res.send('hello get world');
+});
+
+app.post('/', function(req, res) {
+  res.send('hello post world');
+});
 
 const rootDir = '/etc/letsencrypt/live/jadoochat.standard.kr';
 const options = {
