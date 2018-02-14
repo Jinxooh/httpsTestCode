@@ -82,6 +82,10 @@ etag@~1.8.1:
   version "1.8.1"
   resolved "https://registry.yarnpkg.com/etag/-/etag-1.8.1.tgz#41ae2eeb65efa62268aebfea83ac7d79299b0887"
 
+express-redirect-https@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/express-redirect-https/-/express-redirect-https-0.1.0.tgz#ad559c5aea795baed2b7cf90206b1a0c5b8c86e6"
+
 express@^4.16.2:
   version "4.16.2"
   resolved "https://registry.yarnpkg.com/express/-/express-4.16.2.tgz#e35c6dfe2d64b7dca0a5cd4f21781be3299e076c"
