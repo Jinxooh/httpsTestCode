@@ -13,7 +13,6 @@ const fs = require('fs');
 const app = express();
 const redirectHttps = require('express-redirect-https');
 let redirectOptions = {
-  allowForwardForHeader: true,
   httpsPort: 8443,
 };
 
