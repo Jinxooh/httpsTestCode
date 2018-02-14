@@ -35,5 +35,5 @@ const options = {
   cert: fs.readFileSync(`${rootDir}/cert.pem`),
 };
 
-http.createServer(app).listen(8080, function() { console.log('Http server listening on port ', 8080)});
-https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
+http.createServer(app).listen(5000, function() { console.log('Http server listening on port ', 5000)});
+// https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
