@@ -40,7 +40,7 @@ function approveDomains(opts, certs, cb) {
     opts.domains = ['jadoochat.standard.kr'];
   }
   else {
-    opts.email = 'cjswp122@gmail.com';
+    opts.email = 'support@standard.kr';
     opts.agreeTos = true;
   }
 
@@ -56,7 +56,7 @@ require('http').createServer(lex.middleware(require('redirect-https')())).listen
   console.log("Listening for ACME http-01 challenges on", this.address());
 });
 
-var app = require('express')();
+const app = require('express')();
 app.use('/', function (req, res) {
   res.end('Hello, World!');
 });
