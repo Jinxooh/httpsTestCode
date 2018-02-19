@@ -10,6 +10,50 @@ const https = require('https');
 const http = require('http');
 const fs = require('fs');
 
+const app = express();
+const http_redirect = express();
+
+const redirectHttps = require('express-redirect-https');
+let redirectOptions = {
+  httpsPort: 8443,
+};
+
+const http_redirect = express();
+
+// app.use(redirectHttps(redirectOptions));
+
+app.get('/', function(request, response, next) {
+  response.send('HTTPS ALL THE THINGS!');
+});
+ 
+http_redirect.all('*', function(req, res, next) {
+  if (/^http$/.test(req.protocol)) {
+    var host = req.headers.host.replace(/:[0-9]+$/g, ""); // strip the port # if any
+    // if ((HTTPS_PORT != null) && HTTPS_PORT !== 443) {
+    //   return res.redirect("https://" + host + ":" + HTTPS_PORT + req.url, 301);
+    // } else {
+    return res.redirect("https://" + host + req.url, 301);
+    // }
+  } else {
+    return next();
+  }
+});
+// Or for a single 
+// app.get('/', redirectHttps(redirectOptions), function(request, response, next) {
+//   response.send('HTTPS ALL THE THINGS!!');
+// });
+
+const rootDir = '/etc/letsencrypt/live/jadoochat.standard.kr';
+const options = {
+  ca: fs.readFileSync(`${rootDir}/chain.pem`),
+  key: fs.readFileSync(`${rootDir}/privkey.pem`),
+  cert: fs.readFileSync(`${rootDir}/cert.pem`),
+};
+
+http.createServer(http_redirect).listen(8080, function() { console.log('Http server listening on port ', 8080)});
+// http.createServer(app).listen(8080, function() { console.log('Http server listening on port ', 8080)});
+https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
+
 // const lex = require('greenlock-express').create({
 //   // set to https://acme-v01.api.letsencrypt.org/directory in production
 //   configDir: '/etc/letsencrypt',
@@ -65,36 +109,4 @@ const fs = require('fs');
 // // handles your app
 // require('https').createServer(lex.httpsOptions, lex.middleware(app)).listen(8443, function () {
 //   console.log("Listening for ACME tls-sni-01 challenges and serve app on", this.address());
-// });
-
-
-
-
-// const redirectHttps = require('express-redirect-https');
-// let redirectOptions = {
-//   httpsPort: 8443,
-// };
-
-const app = require('express')();
-// app.use(redirectHttps(redirectOptions));
-
-const httpServer = http.createServer();
-
-httpServer.get('*', function(req, res) {
-  res.redirect('https://'+req.headers.host + req.url);
-})
-
-app.get('/', function(request, response, next) {
-  response.send('HTTPS ALL THE THINGS!');
-});
-
-const rootDir = '/etc/letsencrypt/live/jadoochat.standard.kr';
-const options = {
-  ca: fs.readFileSync(`${rootDir}/chain.pem`),
-  key: fs.readFileSync(`${rootDir}/privkey.pem`),
-  cert: fs.readFileSync(`${rootDir}/cert.pem`),
-};
-
-httpServer.listen(8080, function() { console.log('Http server listening on port ', 8080)});
-// http.createServer(app).listen(8080, function() { console.log('Http server listening on port ', 8080)});
-https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
+// })
