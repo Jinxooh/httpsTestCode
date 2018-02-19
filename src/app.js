@@ -27,7 +27,7 @@ app.get('/', function(request, response, next) {
 http_redirect.all('*', function(req, res, next) {
   if (/^http$/.test(req.protocol)) {
     var host = req.headers.host.replace(/:[0-9]+$/g, ""); // strip the port # if any
-    return res.redirect("https://" + host + req.url, 301);
+    return res.redirect(301, "https://" + host + req.url);
   } else {
     return next();
   }
