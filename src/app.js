@@ -7,6 +7,7 @@
 const express = require('express');
 
 const https = require('https');
+const http = require('http');
 const fs = require('fs');
 
 // const lex = require('greenlock-express').create({
@@ -77,7 +78,6 @@ const fs = require('fs');
 const app = require('express')();
 // app.use(redirectHttps(redirectOptions));
 
-const http = express().createServer();
 http.get('*', function(req, res) {
   res.redirect('https://'+req.headers.host + req.url);
 })
