@@ -12,6 +12,7 @@ const fs = require('fs');
 
 const lex = require('greenlock-express').create({
   // set to https://acme-v01.api.letsencrypt.org/directory in production
+  configDir: '/etc/letsencrypt/live/jadoochat.standard.kr',
   server: 'production'
 
 // If you wish to replace the default plugins, you may do so here
@@ -34,7 +35,7 @@ function approveDomains(opts, certs, cb) {
   // The domains being approved for the first time are listed in opts.domains
   // Certs being renewed are listed in certs.altnames
   if (certs) {
-    opts.domains = certs.altnames;
+    opts.domains = ['jadoochat.standard.kr'];
   }
   else {
     opts.email = 'cjswp122@gmail.com';
