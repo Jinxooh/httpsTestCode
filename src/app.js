@@ -12,7 +12,7 @@ const fs = require('fs');
 
 const lex = require('greenlock-express').create({
   // set to https://acme-v01.api.letsencrypt.org/directory in production
-  server: 'staging'
+  server: 'production'
 
 // If you wish to replace the default plugins, you may do so here
 //
