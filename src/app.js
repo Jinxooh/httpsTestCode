@@ -78,7 +78,9 @@ const fs = require('fs');
 const app = require('express')();
 // app.use(redirectHttps(redirectOptions));
 
-http.get('*', function(req, res) {
+const httpServer = http.createServer();
+
+httpServer.get('*', function(req, res) {
   res.redirect('https://'+req.headers.host + req.url);
 })
 
@@ -93,6 +95,6 @@ const options = {
   cert: fs.readFileSync(`${rootDir}/cert.pem`),
 };
 
-http.listen(8080, function() { console.log('Http server listening on port ', 8080)});
+httpServer.listen(8080, function() { console.log('Http server listening on port ', 8080)});
 // http.createServer(app).listen(8080, function() { console.log('Http server listening on port ', 8080)});
 https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
