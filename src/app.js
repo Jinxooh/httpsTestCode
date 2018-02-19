@@ -12,7 +12,7 @@ const fs = require('fs');
 
 const lex = require('greenlock-express').create({
   // set to https://acme-v01.api.letsencrypt.org/directory in production
-  configDir: '/etc/letsencrypt/live/jadoochat.standard.kr',
+  // configDir: '/etc/letsencrypt/live/jadoochat.standard.kr',
   server: 'https://acme-v01.api.letsencrypt.org/directory'
 
 // If you wish to replace the default plugins, you may do so here
