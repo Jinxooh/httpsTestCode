@@ -75,7 +75,7 @@ let redirectOptions = {
   httpsPort: 8443,
 };
 
-const app = require('express');
+const app = require('express')();
 app.use(redirectHttps(redirectOptions));
 
 app.get('/', function(request, response, next) {
