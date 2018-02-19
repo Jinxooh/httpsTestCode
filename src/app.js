@@ -81,11 +81,6 @@ app.use(redirectHttps(redirectOptions));
 app.get('/', function(request, response, next) {
   response.send('HTTPS ALL THE THINGS!');
 });
- 
-// Or for a single 
-app.get('/', redirectHttps(redirectOptions), function(request, response, next) {
-  response.send('HTTPS ALL THE THINGS!!');
-});
 
 const rootDir = '/etc/letsencrypt/live/jadoochat.standard.kr';
 const options = {
