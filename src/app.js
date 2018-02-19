@@ -25,13 +25,15 @@ const lex = require('greenlock-express').create({
 // , sni: require('le-sni-auto').create({})
 
 , approveDomains: approveDomains
+, renewWithin: 81 * 24 * 60 * 60 * 1000,
+renewBy: 80 * 24 * 60 * 60 * 1000,
 });
 
 function approveDomains(opts, certs, cb) {
   // This is where you check your database and associated
   // email addresses with domains and agreements and such
 
-  console.log(certs);
+  // console.log(certs);
   // The domains being approved for the first time are listed in opts.domains
   // Certs being renewed are listed in certs.altnames
   if (certs) {
