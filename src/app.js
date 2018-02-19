@@ -12,13 +12,13 @@ const fs = require('fs');
 
 const lex = require('greenlock-express').create({
   // set to https://acme-v01.api.letsencrypt.org/directory in production
-  // configDir: '/etc/letsencrypt/live/jadoochat.standard.kr',
+  configDir: '/etc/letsencrypt',
   server: 'https://acme-v01.api.letsencrypt.org/directory'
 
 // If you wish to replace the default plugins, you may do so here
 //
-, challenges: { 'http-01': require('le-challenge-fs').create({ webrootPath: '/etc/letsencrypt/live/jadoochat.standard.kr' }) }
-, store: require('le-store-certbot').create({ webrootPath: '/etc/letsencrypt/live/jadoochat.standard.kr' })
+, challenges: { 'http-01': require('le-challenge-fs').create({ webrootPath: '/tmp/acme-challenges' }) }
+, store: require('le-store-certbot').create({ webrootPath: '/tmp/acme-challenges' })
 
 // You probably wouldn't need to replace the default sni handler
 // See https://git.daplie.com/Daplie/le-sni-auto if you think you do
