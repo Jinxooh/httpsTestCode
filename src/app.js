@@ -70,13 +70,18 @@ const fs = require('fs');
 
 
 
-const redirectHttps = require('express-redirect-https');
-let redirectOptions = {
-  httpsPort: 8443,
-};
+// const redirectHttps = require('express-redirect-https');
+// let redirectOptions = {
+//   httpsPort: 8443,
+// };
 
 const app = require('express')();
-app.use(redirectHttps(redirectOptions));
+// app.use(redirectHttps(redirectOptions));
+
+const http = express.createServer();
+http.get('*', function(req, res) {
+  res.redirect('https://'+req.headers.host + req.url);
+})
 
 app.get('/', function(request, response, next) {
   response.send('HTTPS ALL THE THINGS!');
@@ -89,6 +94,6 @@ const options = {
   cert: fs.readFileSync(`${rootDir}/cert.pem`),
 };
 
-http.createServer(app).listen(8080, function() { console.log('Http server listening on port ', 8080)});
+http.listen(8080, function() { console.log('Http server listening on port ', 8080)});
 // http.createServer(app).listen(8080, function() { console.log('Http server listening on port ', 8080)});
 https.createServer(options, app).listen(8443, function() { console.log('Https server listening on port ', 8443)});
