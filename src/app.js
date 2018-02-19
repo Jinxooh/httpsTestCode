@@ -77,7 +77,7 @@ const fs = require('fs');
 const app = require('express')();
 // app.use(redirectHttps(redirectOptions));
 
-const http = express.createServer();
+const http = express().createServer();
 http.get('*', function(req, res) {
   res.redirect('https://'+req.headers.host + req.url);
 })
