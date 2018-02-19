@@ -21,7 +21,7 @@ const lex = require('greenlock-express').create({
 
 // You probably wouldn't need to replace the default sni handler
 // See https://git.daplie.com/Daplie/le-sni-auto if you think you do
-//, sni: require('le-sni-auto').create({})
+, sni: require('le-sni-auto').create({})
 
 , approveDomains: approveDomains
 });

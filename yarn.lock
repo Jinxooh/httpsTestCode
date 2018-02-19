@@ -433,7 +433,7 @@ le-challenge-sni@^2.0.0:
   dependencies:
     le-tls-sni "^0.1.0"
 
-le-sni-auto@^2.0.1, le-sni-auto@^2.1.0:
+le-sni-auto@^2.0.1, le-sni-auto@^2.1.0, le-sni-auto@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/le-sni-auto/-/le-sni-auto-2.1.1.tgz#ad5beb9d8cc8d84b1e128082c7072f84c43ca97b"
   dependencies:

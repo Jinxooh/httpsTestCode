@@ -8,6 +8,7 @@
     "express-redirect-https": "^0.1.0",
     "greenlock-express": "^2.0.12",
     "le-challenge-fs": "^2.0.8",
+    "le-sni-auto": "^2.1.1",
     "le-store-certbot": "^2.0.5",
     "redirect-https": "^1.1.4"
   },
