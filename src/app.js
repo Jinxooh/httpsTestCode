@@ -13,7 +13,7 @@ const fs = require('fs');
 const lex = require('greenlock-express').create({
   // set to https://acme-v01.api.letsencrypt.org/directory in production
   // configDir: '/etc/letsencrypt/live/jadoochat.standard.kr',
-  server: 'production'
+  server: 'https://acme-v01.api.letsencrypt.org/directory'
 
 // If you wish to replace the default plugins, you may do so here
 //
@@ -22,7 +22,7 @@ const lex = require('greenlock-express').create({
 
 // You probably wouldn't need to replace the default sni handler
 // See https://git.daplie.com/Daplie/le-sni-auto if you think you do
-, sni: require('le-sni-auto').create({})
+// , sni: require('le-sni-auto').create({})
 
 , approveDomains: approveDomains
 });
